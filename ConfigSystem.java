@@ -105,12 +105,12 @@ public enum ConfigSystem {
         });
         return ExilideClient.get.getModManager().getModules();
     }
-    
+
     public final String getConfigCreationDate(String configName) throws IOException {
         final List<String> lines = new ArrayList<>();
         String dt = null;
         final List<Module> mods = new ArrayList<>();
-        File targetFile = new File(directory + "\\" + configName + EXTENSION);
+        File targetFile = new File(directory + "\\" + configName);
         final BufferedReader reader = new BufferedReader(new FileReader(targetFile));
         String line = reader.readLine();
         while(line != null) {
