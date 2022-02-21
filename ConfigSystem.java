@@ -49,7 +49,7 @@ public enum ConfigSystem {
                 if(p instanceof DoubleProperty){
                     writer.println("PROPERTY" + delimiter + p.getName() + delimiter + ((DoubleProperty) p).getValue());
                 }
-                else if(p instanceof EnumProperty){
+                if(p instanceof EnumProperty){
                     writer.println("PROPERTY" + delimiter + p.getName() + delimiter + ((EnumProperty) p).getSelected());
                 }
                 if(p instanceof BooleanProperty){
@@ -63,7 +63,7 @@ public enum ConfigSystem {
     }
 
     public final List<Module> loadConfig(final String fileName) throws IOException {
-        final List<String> lines = new CopyOnWriteArrayList<>();
+        final List<String> lines = new ArrayList<>();
         File targetFile = new File(directory + "\\" + fileName + EXTENSION);
 
         BufferedReader reader = new BufferedReader(new FileReader(targetFile));
@@ -107,7 +107,7 @@ public enum ConfigSystem {
     }
     
     public final String getConfigCreationDate(String configName) throws IOException {
-        final List<String> lines = new CopyOnWriteArrayList<>();
+        final List<String> lines = new ArrayList<>();
         String dt = null;
         final List<Module> mods = new ArrayList<>();
         File targetFile = new File(directory + "\\" + configName + EXTENSION);
